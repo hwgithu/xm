@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="css/confirm_order.css"/>
     <script src="js/jquery-3.0.0.min.js"></script>
+
 </head>
 <body>
  <a href="" class="info">
@@ -388,7 +389,7 @@
  <img src="images/qrdd9.png" alt=""/>
  <span>微信支付</span>
  </div>
-
+ <button class="" id="chooseImage">chooseImage</button>
  </div>
 
 
@@ -547,5 +548,90 @@
      })
 //     点击提交订单结束
  </script>
+ <script src="js/jweixin-1.0.0.js"></script>
+ <script>
+
+
+     wx.config({
+         debug: false,
+         appId: 'wxf8b4f85f3a794e77',
+         timestamp: 1503468632,
+         nonceStr: 'ovKILwbgogLWcRhr',
+         signature: '984b54d633659a7a0699498cfb0dd232d4c8687b',
+         jsApiList: [
+             'checkJsApi',
+             'onMenuShareTimeline',
+             'onMenuShareAppMessage',
+             'onMenuShareQQ',
+             'onMenuShareWeibo',
+             'onMenuShareQZone',
+             'hideMenuItems',
+             'showMenuItems',
+             'hideAllNonBaseMenuItem',
+             'showAllNonBaseMenuItem',
+             'translateVoice',
+             'startRecord',
+             'stopRecord',
+             'onVoiceRecordEnd',
+             'playVoice',
+             'onVoicePlayEnd',
+             'pauseVoice',
+             'stopVoice',
+             'uploadVoice',
+             'downloadVoice',
+             'chooseImage',
+             'previewImage',
+             'uploadImage',
+             'downloadImage',
+             'getNetworkType',
+             'openLocation',
+             'getLocation',
+             'hideOptionMenu',
+             'showOptionMenu',
+             'closeWindow',
+             'scanQRCode',
+             'chooseWXPay',
+             'openProductSpecificView',
+             'addCard',
+             'chooseCard',
+             'openCard'
+         ]
+     });
+
+
+
+     wx.ready(function () {
+         // 1 鍒ゆ柇褰撳墠鐗堟湰鏄惁鏀寔鎸囧畾 JS 鎺ュ彛锛屾敮鎸佹壒閲忓垽鏂�
+         document.querySelector('#checkJsApi').onclick = function () {
+             wx.checkJsApi({
+                 jsApiList: [
+                     'getNetworkType',
+                     'previewImage'
+                 ],
+                 success: function (res) {
+                     alert(JSON.stringify(res));
+                 }
+             });
+         };
+
+         var images = {
+             localId: [],
+             serverId: []
+         };
+         document.querySelector('#chooseImage').onclick = function () {
+             wx.chooseImage({
+                 success: function (res) {
+                     images.localId = res.localIds;
+                     alert('宸查€夋嫨 ' + res.localIds.length + ' 寮犲浘鐗�');
+                 }
+             });
+         };
+
+
+
+     })
+ </script>
+
+
 </body>
 </html>
