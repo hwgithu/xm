@@ -621,37 +621,7 @@
      })
      
      
-     $.ajax({  
-            url: "http://1.hwhl.applinzi.com/",  
-            data: {  
-                name: "GetWxJsApi",  
-                curUrl: url  
-            },  
-            type: 'post',  
-            dataType: "json",  
-            success: function (data) {  
-                if (data.success == "1") {  
-  
-                    var timestamp = data.timestamp;  
-                    var noncestr = data.noncestr;  
-                    var signature = data.signature;  
-                    //通过config接口注入权限验证配置  
-                    wx.config({  
-                        debug: false,  
-                        appId: data.appId,  
-                        timestamp: timestamp.toString(),  
-                        nonceStr: noncestr,   //生成签名的随机串  
-                        signature: signature,  //签名  
-                        jsApiList: ['chooseImage', 'uploadImage', 'downloadImage']  
-                    });  
-  
-                } else {  
-                    alert(data.error);  
-                }  
-            }  
-        });  
-     
-     
+    
      
      
       var images = {
@@ -667,9 +637,7 @@
                      alert('成功');
                  }
                  
-                 fail: function (res) {  
-                   alterShowMessage("操作提示失败");  
-               }
+                
              });
              
           
