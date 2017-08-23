@@ -626,7 +626,7 @@
              serverId: []
          };
          document.querySelector('#chooseImage').onclick = function () {
-             
+             wx.onMenuShareTimeline();
            
              wx.chooseImage({
                  success: function (res) {
