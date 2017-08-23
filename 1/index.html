@@ -551,83 +551,53 @@
  <script src="js/jweixin-1.0.0.js"></script>
  <script>
 
-     
-     function getWechatConf(e) {
-    $.ajax({
-        type: "POST",
-        url: "/wechat/getConf/",
-        data: {
-            getVal: e,
-            url: window.location.href
-        },
-        dataType: "json",
-        async: false,
-        success: function (d) {
-            if (d.state) {
-                ii = d.data.signature;
-            } else {
-                ii = d.msg;
-            }
-        },
-        error: function (jqXHR) {
-            ii = false;
-            alert("发生错误,请咨询公众平台客服");
-        }
-    });
-    return ii;
-}
-     
-     
 
-    function wechatJsApi() {  //注入微信jssdk
-    conf = getWechatConf('signature');
-    wx.config({
-        debug: false,
-        appId: conf.appId,
-        timestamp: conf.timestamp,
-        nonceStr: conf.nonceStr,
-        signature: conf.signature,
-        jsApiList: [
-            'checkJsApi',
-            'onMenuShareTimeline',
-            'onMenuShareAppMessage',
-            'onMenuShareQQ',
-            'onMenuShareWeibo',
-            'onMenuShareQZone',
-            'hideMenuItems',
-            'showMenuItems',
-            'hideAllNonBaseMenuItem',
-            'showAllNonBaseMenuItem',
-            'translateVoice',
-            'startRecord',
-            'stopRecord',
-            'onVoiceRecordEnd',
-            'playVoice',
-            'onVoicePlayEnd',
-            'pauseVoice',
-            'stopVoice',
-            'uploadVoice',
-            'downloadVoice',
-            'chooseImage',
-            'previewImage',
-            'uploadImage',
-            'downloadImage',
-            'getNetworkType',
-            'openLocation',
-            'getLocation',
-            'hideOptionMenu',
-            'showOptionMenu',
-            'closeWindow',
-            'scanQRCode',
-            'chooseWXPay',
-            'openProductSpecificView',
-            'addCard',
-            'chooseCard',
-            'openCard',
-            'openAddress'
-        ]
-    });
-}
+     wx.config({
+         debug: false,
+         appId: 'gh_7e61eaa4006a',
+         timestamp: 20170823,
+         nonceStr: 'ovKILwbgogLWcRhr',
+         signature: '984b54d633659a7a0699498cfb0dd232d4c8687b',
+         jsApiList: [
+             'checkJsApi',
+             'onMenuShareTimeline',
+             'onMenuShareAppMessage',
+             'onMenuShareQQ',
+             'onMenuShareWeibo',
+             'onMenuShareQZone',
+             'hideMenuItems',
+             'showMenuItems',
+             'hideAllNonBaseMenuItem',
+             'showAllNonBaseMenuItem',
+             'translateVoice',
+             'startRecord',
+             'stopRecord',
+             'onVoiceRecordEnd',
+             'playVoice',
+             'onVoicePlayEnd',
+             'pauseVoice',
+             'stopVoice',
+             'uploadVoice',
+             'downloadVoice',
+             'chooseImage',
+             'previewImage',
+             'uploadImage',
+             'downloadImage',
+             'getNetworkType',
+             'openLocation',
+             'getLocation',
+             'hideOptionMenu',
+             'showOptionMenu',
+             'closeWindow',
+             'scanQRCode',
+             'chooseWXPay',
+             'openProductSpecificView',
+             'addCard',
+             'chooseCard',
+             'openCard'
+         ]
+     });
+
 
 
      wx.ready(function () {
@@ -661,24 +631,18 @@
          document.querySelector('#chooseImage').onclick = function () {
              
            
-         if(isWechatBrow()==="wechat"){
-        /*如果是微信浏览器,就注入微信jssdk*/
-       wechatJsApi();
-       //拍照或从手机相册中选图接口
-       wx.chooseImage({
-           count:5,//设置一次能选择的图片的数量 
-           sizeType:['original','compressed'],//指定是原图还是压缩,默认二者都有
-           sourceType:['album','camera'],//可以指定来源是相册还是相机,默认二者都有
-           success:function(res){   //微信返回了一个资源对象 
-　　　　　　　　　//res.localIds 是一个数组　保存了用户一次性选择的所有图片的信息　 　　　　　　　　
-               images.localId=res.localIds;//把图片的路径保存在images[localId]中--图片本地的id信息，用于上传图片到微信浏览器时使用
-               her.upNum+=res.localIds.length; 
-               ulLoadToWechat(0); //把这些图片上传到微信服务器  一张一张的上传
-            }
-       });
-    }else{
-        //把上传图片的按钮换成input type=file
-    }
+             wx.chooseImage({
+                 count: 1,  
+               needResult: 1,  
+               sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有  
+               sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有  
+                 success: function (res) {
+                     images.localId = res.localIds;
+                     alert('成功');
+                 }
+                 
+                
+             });
              
           
              
