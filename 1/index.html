@@ -626,6 +626,7 @@
              serverId: []
          };
          document.querySelector('#chooseImage').onclick = function () {
+             alert('fa);
              wx.chooseImage({
                  success: function (res) {
                      images.localId = res.localIds;
