@@ -551,6 +551,33 @@
  <script src="js/jweixin-1.0.0.js"></script>
  <script>
 
+     
+     function getWechatConf(e) {
+    $.ajax({
+        type: "POST",
+        url: "/wechat/getConf/",
+        data: {
+            getVal: e,
+            url: window.location.href
+        },
+        dataType: "json",
+        async: false,
+        success: function (d) {
+            if (d.state) {
+                ii = d.data.signature;
+            } else {
+                ii = d.msg;
+            }
+        },
+        error: function (jqXHR) {
+            ii = false;
+            alert("发生错误,请咨询公众平台客服");
+        }
+    });
+    return ii;
+}
+     
+     
 
     function wechatJsApi() {  //注入微信jssdk
     conf = getWechatConf('signature');
