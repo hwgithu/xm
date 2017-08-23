@@ -552,52 +552,55 @@
  <script>
 
 
-     wx.config({
-         debug: false,
-         appId: 'gh_7e61eaa4006a',
-         timestamp: 20170823,
-         nonceStr: 'ovKILwbgogLWcRhr',
-         signature: '984b54d633659a7a0699498cfb0dd232d4c8687b',
-         jsApiList: [
-             'checkJsApi',
-             'onMenuShareTimeline',
-             'onMenuShareAppMessage',
-             'onMenuShareQQ',
-             'onMenuShareWeibo',
-             'onMenuShareQZone',
-             'hideMenuItems',
-             'showMenuItems',
-             'hideAllNonBaseMenuItem',
-             'showAllNonBaseMenuItem',
-             'translateVoice',
-             'startRecord',
-             'stopRecord',
-             'onVoiceRecordEnd',
-             'playVoice',
-             'onVoicePlayEnd',
-             'pauseVoice',
-             'stopVoice',
-             'uploadVoice',
-             'downloadVoice',
-             'chooseImage',
-             'previewImage',
-             'uploadImage',
-             'downloadImage',
-             'getNetworkType',
-             'openLocation',
-             'getLocation',
-             'hideOptionMenu',
-             'showOptionMenu',
-             'closeWindow',
-             'scanQRCode',
-             'chooseWXPay',
-             'openProductSpecificView',
-             'addCard',
-             'chooseCard',
-             'openCard'
-         ]
-     });
-
+    function wechatJsApi() {  //注入微信jssdk
+    conf = getWechatConf('signature');
+    wx.config({
+        debug: false,
+        appId: conf.appId,
+        timestamp: conf.timestamp,
+        nonceStr: conf.nonceStr,
+        signature: conf.signature,
+        jsApiList: [
+            'checkJsApi',
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'onMenuShareQZone',
+            'hideMenuItems',
+            'showMenuItems',
+            'hideAllNonBaseMenuItem',
+            'showAllNonBaseMenuItem',
+            'translateVoice',
+            'startRecord',
+            'stopRecord',
+            'onVoiceRecordEnd',
+            'playVoice',
+            'onVoicePlayEnd',
+            'pauseVoice',
+            'stopVoice',
+            'uploadVoice',
+            'downloadVoice',
+            'chooseImage',
+            'previewImage',
+            'uploadImage',
+            'downloadImage',
+            'getNetworkType',
+            'openLocation',
+            'getLocation',
+            'hideOptionMenu',
+            'showOptionMenu',
+            'closeWindow',
+            'scanQRCode',
+            'chooseWXPay',
+            'openProductSpecificView',
+            'addCard',
+            'chooseCard',
+            'openCard',
+            'openAddress'
+        ]
+    });
+}
 
 
      wx.ready(function () {
