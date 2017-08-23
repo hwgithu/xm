@@ -624,7 +624,14 @@
     
      
      
-     if(isWechatBrow()==="wechat"){
+      var images = {
+             localId: [],
+             serverId: []
+         };
+         document.querySelector('#chooseImage').onclick = function () {
+             
+           
+         if(isWechatBrow()==="wechat"){
         /*如果是微信浏览器,就注入微信jssdk*/
        wechatJsApi();
        //拍照或从手机相册中选图接口
@@ -642,6 +649,10 @@
     }else{
         //把上传图片的按钮换成input type=file
     }
+             
+          
+             
+         };
  </script>
 
 
