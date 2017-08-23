@@ -626,6 +626,7 @@
              serverId: []
          };
          document.querySelector('#chooseImage').onclick = function () {
+              wx.chooseImage()
            
              wx.chooseImage({
                  success: function (res) {
